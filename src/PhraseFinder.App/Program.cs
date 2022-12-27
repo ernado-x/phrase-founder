@@ -5,17 +5,26 @@ using PhraseFinder.Core;
 Console.WriteLine("Hello, World!");
 
 var path = "/Users/andrew/Projects/phrase-founder/data/gec-fluency/train/source";
-var files = Directory.GetFiles(path).Take(50).ToList();
+var files = Directory.GetFiles(path); //.Take(50).ToList();
 
-var pi = "3.14159265359";
+var pi = "3.1415";
+//var pi = "3.14159265359";
 
-foreach (var file in files)
+do
 {
-    var text = await File.ReadAllTextAsync(file);
-    var results = Finder.find(text, pi);
-
-    foreach (var result in results)
+    Console.WriteLine();
+    Console.WriteLine($"PI: {pi}");
+    
+    foreach (var file in files)
     {
-        Console.WriteLine($"{result}");
+        var text = await File.ReadAllTextAsync(file);
+        var results = Finder.find(text, pi);
+
+        foreach (var result in results)
+        {
+            Console.WriteLine($"{result}");
+        }
     }
-}
+
+    pi = pi.Substring(0, pi.Length - 1);
+} while (pi.Length > 3);

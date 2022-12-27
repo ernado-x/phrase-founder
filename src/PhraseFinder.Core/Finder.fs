@@ -14,12 +14,12 @@ module Finder =
     ///Cleanup text from special symbols
     let cleanup (text: string) : string =
         let mutable result = text
-        let symbols = [ ','; ','; '['; ']'; '''; '.'; ')'; '('; ',' ]
+        let symbols = [ ","; ","; "["; "]"; ";"; ")"; "("; ","; "-"; "\n"]
 
         for symbol in symbols do
-            result <- result.Replace(symbol, ' ')
+            result <- result.Replace(symbol, " ").Trim()
 
-        text
+        result
 
 
     let filter (line: string, pi: string) : bool =
