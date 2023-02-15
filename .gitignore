@@ -4,3 +4,7 @@ __pycache__
 build
 dist
 .DS_Store
+.idea/
+obj/
+bin/
+.fake
